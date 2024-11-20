@@ -4,10 +4,13 @@ import java.util.HashMap;
 
 public class Wallet
 {
+    public final int ID;
     public final String Owner;
     public final HashMap<ValueCurrency, Double> Currencies;
 
-    public Wallet(String owner) {
+    public Wallet(int id, String owner)
+    {
+        ID = id;
         Owner = owner;
         Currencies = new HashMap<>();
     }

@@ -26,4 +26,9 @@ public class CurrencyManager
     {
         return _currencies;
     }
+
+    public void GetInfo()
+    {
+
+    }
 }
