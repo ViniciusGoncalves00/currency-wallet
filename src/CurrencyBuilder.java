@@ -9,12 +9,13 @@ public class CurrencyBuilder
         _currencyManager = currencyManager;
     }
 
-    public ValueCurrency CreateCurrency(String name, String acronym, String symbol, double exchangeRate)
+    public void CreateCurrency(String name, String acronym, String symbol, double exchangeRate)
     {
-        for (ValueCurrency currency : _currencyManager.GetCurrencies().keySet()) {
+        for (ValueCurrency currency : _currencyManager.GetCurrencies().keySet())
+        {
             if (currency.Name.equalsIgnoreCase(name)) {
                 System.out.println("The currency with name " + name + " already exists. Returning the currency instance.");
-                return currency;
+                return;
             }
         }
 
@@ -26,6 +27,5 @@ public class CurrencyBuilder
         };
 
         _currencyManager.GetCurrencies().put(currency, exchangeRate);
-        return currency;
     }
 }

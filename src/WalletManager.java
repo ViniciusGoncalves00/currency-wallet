@@ -25,8 +25,14 @@ public class WalletManager
         return _wallets;
     }
 
-    public void GetInfo()
+    public String GetInfo()
     {
+        var info = new StringBuilder();
+        for(Wallet wallet : _wallets)
+        {
+            info.append(wallet.GetInfo());
+        }
 
+        return info.toString();
     }
 }

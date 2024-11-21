@@ -12,5 +12,5 @@ public abstract class ValueCurrency
         Symbol = symbol;
     }
 
-    public String getInfo() { return "Name: " + ", Symbol: " + Symbol; }
+    public String GetInfo() { return "Name: " + Name + ", Acronym " + Acronym + ", Symbol: " + Symbol; }
 }

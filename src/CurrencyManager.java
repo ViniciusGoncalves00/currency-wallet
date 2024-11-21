@@ -1,5 +1,4 @@
 import currencies.ValueCurrency;
-
 import java.util.HashMap;
 
 public class CurrencyManager
@@ -27,8 +26,14 @@ public class CurrencyManager
         return _currencies;
     }
 
-    public void GetInfo()
+    public String GetInfo()
     {
+        var info = new StringBuilder();
+        for(ValueCurrency currency : _currencies.keySet())
+        {
+            info.append(currency.GetInfo());
+        }
 
+        return info.toString();
     }
 }

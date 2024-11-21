@@ -1,5 +1,3 @@
-import currencies.*;
-
 public class WalletBuilder
 {
     private final WalletManager _walletManager;

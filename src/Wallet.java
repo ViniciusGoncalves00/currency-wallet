@@ -15,14 +15,14 @@ public class Wallet
         Currencies = new HashMap<>();
     }
 
-    public String getInfo()
+    public String GetInfo()
     {
-        StringBuilder builder = new StringBuilder();
-        builder.append("Owner: ").append(Owner).append("\n");
+        var info = new StringBuilder();
+        info.append("Owner: ").append(Owner).append("\n");
 
         for (ValueCurrency currency : Currencies.keySet())
         {
-            builder.append(currency.Name)
+            info.append(currency.Name)
                     .append(": ")
                     .append(currency.Symbol)
                     .append(" ")
@@ -30,15 +30,24 @@ public class Wallet
                     .append("\n");
         }
 
-        return builder.toString();
+        return info.toString();
     }
 
-    public void Add(ValueCurrency currency, double amount)
+    public void AddCurrency(ValueCurrency currency, double amount)
+    {
+        HandleCurrency(currency, amount, 1);
+    }
+
+    public void SubtractCurrency(ValueCurrency currency, double amount)
+    {
+        HandleCurrency(currency, amount, -1);
+    }
+
+    private void HandleCurrency(ValueCurrency currency, double amount, int operation)
     {
         if (Currencies.containsKey(currency))
         {
-            double currentAmount = Currencies.get(currency);
-            Currencies.put(currency, currentAmount + amount);
+            Currencies.compute(currency, (k, currentAmount) -> currentAmount + (amount * operation));
         }
         else
         {
